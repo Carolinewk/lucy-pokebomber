@@ -1,6 +1,6 @@
 // src/config.ts
 var REMOTE_HOST = "18.228.172.111";
-var REMOTE_PORT = 8080;
+var REMOTE_PORT = 8081;
 var LOCAL_PORT = 2020;
 function has_window() {
   return typeof window !== "undefined" && typeof window.location !== "undefined";
@@ -38,10 +38,10 @@ function detect_url() {
       return `ws://${host}:${LOCAL_PORT}`;
     }
   }
-  return `ws://${REMOTE_HOST}:${REMOTE_PORT}`;
+  return `wss://${REMOTE_HOST}:${REMOTE_PORT}`;
 }
 var WS_URL = detect_url();
-var DEFAULT_REMOTE_WS = `ws://${REMOTE_HOST}:${REMOTE_PORT}`;
+var DEFAULT_REMOTE_WS = `wss://${REMOTE_HOST}:${REMOTE_PORT}`;
 var DEFAULT_LOCAL_WS = `ws://localhost:${LOCAL_PORT}`;
 
 // src/client.ts
@@ -292,7 +292,7 @@ var package_default = {
   version: "0.1.0",
   type: "module",
   scripts: {
-    build: "bun build pokebomber/index.ts --outdir pokebomber/dist --target browser --format esm"
+    build: "bun build pokebomber/index.ts --outdir docs/dist --target browser --format esm"
   }
 };
 
